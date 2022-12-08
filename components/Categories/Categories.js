@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 
-const Categories = () => {
+const Categories = ({setPlayerCategory, playerCategory}) => {
   const [categories, setCategories] = useState([])
+
 
   useEffect(() => {
     fetch('https://opentdb.com/api_category.php')
@@ -12,15 +13,19 @@ const Categories = () => {
   const returnDropdown = () => {
     if (categories.length) {
       return categories.map(cat => {
+        console.log(cat)
         return (
-          <option></option>
+          <option value={cat.name}>{cat.name}</option>
         )
       })
     }
   }
 
   return (
-    <select>{returnDropdown()}</select>
+    <select onChange={(e) => setPlayerCategory(e.target.value)}>
+      <option value=''>Choose Your Poison</option>
+      {returnDropdown()}
+    </select>
   )
 }
 
