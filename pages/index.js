@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Header />
-      <UserSelection setPlayerCategory={setPlayerCategory} playerCategory={playerCategory}/>
+      <UserSelection setPlayerCategory={setPlayerCategory} playerCategory={playerCategory} setNumberQuestions={setNumberQuestions} numberQuestions={numberQuestions}/>
     </div>
   )
 }
