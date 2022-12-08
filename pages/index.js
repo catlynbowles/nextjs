@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <UserSelection />
+      <UserSelection setPlayerCategory={setPlayerCategory} playerCategory={playerCategory}/>
     </div>
   )
 }

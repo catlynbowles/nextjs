@@ -13,7 +13,6 @@ const Categories = ({setPlayerCategory, playerCategory}) => {
   const returnDropdown = () => {
     if (categories.length) {
       return categories.map(cat => {
-        console.log(cat)
         return (
           <option value={cat.name}>{cat.name}</option>
         )
