@@ -22,7 +22,7 @@ const Categories = ({setPlayerCategory, playerCategory}) => {
   }
 
   return (
-    <select onChange={(e) => setPlayerCategory(e.target.value)}>
+    <select required onChange={(e) => setPlayerCategory(e.target.value)}>
       <option value=''>Choose Your Poison</option>
       {returnDropdown()}
     </select>

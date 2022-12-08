@@ -1,13 +1,14 @@
-import { useEffect } from 'react' 
+import { useState } from 'react' 
 import styles from '../styles/Home.module.css'
-import Categories from '../components/Categories/Categories'
+import UserSelection from '../components/UserSelection/UserSelection'
 
 const Home = () => {
-  const [playerCategor, setPlayerCategory] = useState('')
+  const [playerCategory, setPlayerCategory] = useState('')
+  const [numberQuestions, setNumberQuestions] = useState(0)
+
   return (
     <div className={styles.container}>
-      <Categories playerCategory={playerCategory} setPlayerCategory={setPlayerCategory}/>
-      hi
+      <UserSelection />
     </div>
   )
 }
