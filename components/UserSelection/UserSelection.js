@@ -9,7 +9,7 @@ const UserSelection = ({setPlayerCategory, playerCategory, numberQuestions, setN
       <Categories setPlayerCategory={setPlayerCategory} playerCategory={playerCategory}/>
       <NumberInput setNumberQuestions={setNumberQuestions}/>
       <p className={styles.text}>Do you dare ?</p>
-      <Link href={`/${playerCategory}/${numberQuestions}`}>
+      <Link href={`${playerCategory}/${numberQuestions}`}>
         <button>Enter</button>
       </Link>
     </div>
