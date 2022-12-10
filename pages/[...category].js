@@ -2,16 +2,13 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/router"
 
 const NewThing = ({playerCategory, router, numberQuestions}) => { 
-  const routery = useRouter()
-  console.log(routery)
-  // const que = router.query.category[1]
+  const [userCategory, setUserCategory] = useState('')
+  const [numQuestions, setNumQuestions] = useState(0)
   
   useEffect(() => {
-    
     if (router.query.category) {    
-      console.log(router.query, 'router.query')
-      const cat = {name: router.query.category[0].split(',')[1], id: router.query.category[0].split(',')[0]}
-      console.log(cat)
+      setUserCategory({name: router.query.category[0].split(',')[1], id: router.query.category[0].split(',')[0]})
+      setNumQuestions(router.query.category[1])
     }
   }, [router])
 
