@@ -14,7 +14,7 @@ const Categories = ({setPlayerCategory, playerCategory}) => {
     if (categories.length) {
       return categories.map(cat => {
         return (
-          <option key={cat.id} value={cat.name}>{cat.name}</option>
+          <option key={cat.id} value={`${cat.id}, ${cat.name}`}>{cat.name}</option>
         )
       })
     }
