@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
+import Question from "../components/Question/Question"
 
 const NewThing = ({playerCategory, router, numberQuestions}) => { 
   const [userCategory, setUserCategory] = useState('')
