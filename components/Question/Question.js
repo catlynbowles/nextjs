@@ -7,6 +7,9 @@ const Question = ({currentQuestion, generateNewQuestion}) => {
     if (currentQuestion) {
       const randomIndex = Math.floor(Math.random() * 3)
       let totalAnswers = currentQuestion.incorrect_answers
+      if (totalAnswers.length === 3) {
+        totalAnswers.splice(randomIndex, 0, currentQuestion.correct_answer)
+      }
       setResponses(totalAnswers)
     }
   }, [currentQuestion])
