@@ -21,13 +21,16 @@ const NewThing = ({playerCategory, router, numberQuestions}) => {
   }, [userCategory])
 
   const generateNewQuestion = () => {
+    console.log(
+      'hi'
+    )
     setCurrentQuestionIndex(currentQuestionIndex + 1) 
     }
     
     return (
       <div>
       <h2>{userCategory.name}</h2>
-      <Question currentQuestion={triviaQuestions[currentQuestionIndex]}/>
+      <Question currentQuestion={triviaQuestions[currentQuestionIndex]} generateNewQuestion={generateNewQuestion}/>
     </div>
   )
 }
