@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const Question = ({ currentQuestion, generateNewQuestion }) => {
+const Question = ({ currentQuestionIndex, currentQuestion, generateNewQuestion }) => {
   const [responses, setResponses] = useState([]);
 
   useEffect(() => {
@@ -33,6 +33,7 @@ const Question = ({ currentQuestion, generateNewQuestion }) => {
 
   return (
     <div>
+      <p>{currentQuestionIndex} / 10</p>
       <h2>{currentQuestion && unescape(currentQuestion.question)}</h2>
       <form>{responses.length && generateRadioButtons()}</form>
       <button type="submit" onClick={() => generateNewQuestion()}>
