@@ -3,13 +3,15 @@ import NumberInput from "../NumberInput/NumberInput"
 import styles from '../../styles/UserSelection.module.css'
 import Link from "next/link"
 
-const UserSelection = ({setPlayerCategory, playerCategory, numberQuestions, setNumberQuestions}) => {
+const UserSelection = ({setPlayerCategory, playerCategory}) => {
+  const id = playerCategory.split(',')[0]
+  const name = playerCategory.replace(":", "").split(",")[1];
   return (
     <div className={styles.container}>
       <Categories setPlayerCategory={setPlayerCategory} playerCategory={playerCategory}/>
-      <NumberInput setNumberQuestions={setNumberQuestions}/>
+      {/* <NumberInput setNumberQuestions={setNumberQuestions}/> */}
       <p className={styles.text}>Do you dare ?</p>
-      <Link href={`${playerCategory.replace(':', '')}/${numberQuestions}`}>
+      <Link href={`${name}/${id}`}>
         <button>Enter</button>
       </Link>
     </div>

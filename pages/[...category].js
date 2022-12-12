@@ -3,23 +3,21 @@ import Question from "../components/Question/Question";
 
 const NewThing = ({ playerCategory, router, numberQuestions }) => {
   const [userCategory, setUserCategory] = useState("");
-  const [numQuestions, setNumQuestions] = useState(0);
   const [triviaQuestions, setTriviaQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
 
   useEffect(() => {
     if (router.query.category) {
       setUserCategory({
-        name: router.query.category[0].split(",")[1],
-        id: router.query.category[0].split(",")[0],
+        name: router.query.category[0],
+        id: router.query.category[1],
       });
-      setNumQuestions(router.query.category[1]);
     }
   }, [router]);
 
   useEffect(() => {
     fetch(
-      `https://opentdb.com/api.php?amount=${numQuestions}&category=${userCategory.id}&difficulty=easy&type=multiple`
+      `https://opentdb.com/api.php?amount=10&category=${userCategory.id}&difficulty=easy&type=multiple`
     )
       .then((response) => response.json())
       .then((data) => setTriviaQuestions(data.results));
