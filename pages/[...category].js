@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Question from "../components/Question/Question";
 
-const NewThing = ({ playerCategory, router, numberQuestions }) => {
+const NewThing = ({router}) => {
   const [userCategory, setUserCategory] = useState("");
   const [triviaQuestions, setTriviaQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [score, setScore] = useState(0)
 
   useEffect(() => {
     if (router.query.category) {
@@ -34,6 +35,8 @@ const NewThing = ({ playerCategory, router, numberQuestions }) => {
         currentQuestionIndex={currentQuestionIndex}
         currentQuestion={triviaQuestions[currentQuestionIndex]}
         generateNewQuestion={generateNewQuestion}
+        score={score}
+        setScore={setScore}
       />
     </div>
   );

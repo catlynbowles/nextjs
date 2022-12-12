@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-const Question = ({ currentQuestionIndex, currentQuestion, generateNewQuestion }) => {
+const Question = ({ currentQuestionIndex, currentQuestion, generateNewQuestion, score, setScore }) => {
   const [responses, setResponses] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState('')
 
   useEffect(() => {
     if (currentQuestion) {
@@ -16,9 +17,10 @@ const Question = ({ currentQuestionIndex, currentQuestion, generateNewQuestion }
 
   const generateRadioButtons = () => {
     return responses.map((resp) => {
+      resp = unescape(resp)
       return (
         <div>
-          <input type="radio" id={resp} key={resp} name="answer" value={resp} />
+          <input type="radio" id={resp} key={resp} name="answer" value={resp} onChange={(e) => setSelectedAnswer(e.target.value)}/>
           <label for={resp}>{resp}</label>
         </div>
       );
@@ -31,12 +33,20 @@ const Question = ({ currentQuestionIndex, currentQuestion, generateNewQuestion }
       .querySelector("html").textContent;
   }
 
+  const checkForCorrectAnswer = () => {
+    console.log(selectedAnswer, currentQuestion.correct_answer)
+    selectedAnswer === currentQuestion.correct_answer ? setScore(score + 1) : 
+    score >= 0 && setScore(score - 1)
+    generateNewQuestion()
+  }
+
   return (
     <div>
-      <p>{currentQuestionIndex} / 10</p>
+      <p>{currentQuestionIndex + 1} / 10</p>
+      <p>{score}</p>
       <h2>{currentQuestion && unescape(currentQuestion.question)}</h2>
       <form>{responses.length && generateRadioButtons()}</form>
-      <button type="submit" onClick={() => generateNewQuestion()}>
+      <button type="submit" onClick={() => checkForCorrectAnswer()}>
         Submit
       </button>
     </div>
